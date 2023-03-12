@@ -25,13 +25,13 @@ class MyStack extends TerraformStack {
 const app = new App();
 const stack = new MyStack(app, "aws_instance");
 
-new RemoteBackend(stack, {
-  hostname: "app.terraform.io",
-  organization: "<YOUR_ORG>",
-  workspaces: {
-    name: "learn-cdktf",
-  },
-});
+// new RemoteBackend(stack, {
+//   hostname: "app.terraform.io",
+//   organization: "<YOUR_ORG>",
+//   workspaces: {
+//     name: "learn-cdktf",
+//   },
+// });
 
 app.synth();
 
