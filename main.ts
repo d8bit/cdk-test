@@ -2,7 +2,6 @@ import { Construct } from "constructs";
 import { App, TerraformStack, TerraformOutput, S3Backend } from "cdktf";
 import { AwsProvider } from "@cdktf/provider-aws/lib/provider";
 import { Instance } from "@cdktf/provider-aws/lib/instance";
-// import { S3Bucket } from "@cdktf/provider-aws/lib/s3-bucket";
 
 class MyStack extends TerraformStack {
   constructor(scope: Construct, id: string) {
