@@ -13,8 +13,14 @@ class MyStack extends TerraformStack {
       region: "eu-west-1",
     });
 
-    const myId = "myFirstInstance"
+    const myId = "myFirstInstanceID";
     new Ec2Module(this, myId);
+
+
+    // new Instance(this, "compute", {
+    //   ami: "ami-08fea9e08576c443b",
+    //   instanceType: "t2.micro",
+    // });
 
   }
 }

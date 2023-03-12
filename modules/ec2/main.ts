@@ -12,6 +12,9 @@ export class EC2Module extends TerraformStack {
     const ec2Instance = new Instance(this, id, {
       ami: "ami-08fea9e08576c443b",
       instanceType: "t2.micro",
+      tags: {
+        "Name": id
+      }
     });
 
     this.publicIp = ec2Instance.publicIp
