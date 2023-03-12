@@ -1,9 +1,9 @@
 import { Construct } from "constructs";
-import { App, TerraformStack, S3Backend } from "cdktf";
+import { App, TerraformStack, TerraformOutput, S3Backend } from "cdktf";
 import { AwsProvider } from "@cdktf/provider-aws/lib/provider";
 // import { Instance } from "@cdktf/provider-aws/lib/instance";
 
-import { Ec2Module } from "./.gen/modules/EC2Module";
+import { EC2Module } from "./modules/ec2/ec2instance";
 
 class MyStack extends TerraformStack {
   constructor(scope: Construct, id: string) {
@@ -14,13 +14,14 @@ class MyStack extends TerraformStack {
     });
 
     const myId = "myFirstInstanceID";
-    new Ec2Module(this, myId);
+    const tags = {
+      "Name": myId
+    }
+    const ec2Instance = new EC2Module(this, myId, tags);
 
-
-    // new Instance(this, "compute", {
-    //   ami: "ami-08fea9e08576c443b",
-    //   instanceType: "t2.micro",
-    // });
+    new TerraformOutput(this, "public_ip", {
+      value: ec2Instance.publicIp,
+    });
 
   }
 }
