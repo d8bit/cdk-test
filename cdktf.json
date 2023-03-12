@@ -4,7 +4,12 @@
   "projectId": "2f579b0b-ea38-43bd-be8d-abf5c9a2ba78",
   "sendCrashReports": "true",
   "terraformProviders": [],
-  "terraformModules": [],
+  "terraformModules": [
+    {
+      "name": "EC2Module",
+      "source": "./modules/ec2"
+    }
+  ],
   "context": {
     "excludeStackIdFromLogicalIds": "true",
     "allowSepCharsInLogicalIds": "true"
