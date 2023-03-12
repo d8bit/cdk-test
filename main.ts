@@ -17,10 +17,6 @@ class MyStack extends TerraformStack {
       instanceType: "t2.micro",
     });
 
-    // new S3Bucket(this, "bucket", {
-    //   bucketPrefix: "myCdkStates",
-    // });
-
     new TerraformOutput(this, "public_ip", {
       value: ec2Instance.publicIp,
     });
@@ -29,16 +25,6 @@ class MyStack extends TerraformStack {
 
 const app = new App();
 const stack = new MyStack(app, "aws_instance");
-// new MyStack(app, "aws_instance");
-
-// new RemoteBackend(stack, {
-//   hostname: "app.terraform.io",
-//   organization: "<YOUR_ORG>",
-//   workspaces: {
-//     name: "learn-cdktf",
-//   },
-// });
-
 
 new S3Backend(stack, {
     bucket: "mycdkstates",
