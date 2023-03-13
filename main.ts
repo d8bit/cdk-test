@@ -3,13 +3,14 @@ import { App, TerraformStack, TerraformOutput, S3Backend } from "cdktf";
 import { AwsProvider } from "@cdktf/provider-aws/lib/provider";
 
 import { EC2Module } from "./modules/ec2/ec2instance";
+import { Variables } from "./variables";
 
 class MyStack extends TerraformStack {
   constructor(scope: Construct, id: string) {
     super(scope, id);
 
-    new AwsProvider(this, "AWS", {
-      region: "eu-west-1",
+    new AwsProvider(this, `${Variables.provider}`, {
+      region: `${Variables.region}`,
     });
 
     const myId = "myFirstInstanceID";
@@ -31,7 +32,7 @@ const stack = new MyStack(app, "aws_instance");
 new S3Backend(stack, {
     bucket: "mycdkstates",
     key   : "ec2instances",
-    region: "eu-west-1"
+    region: `${Variables.region}`
   }
 );
 
