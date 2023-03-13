@@ -1,7 +1,6 @@
 import { Construct } from "constructs";
 import { App, TerraformStack, TerraformOutput, S3Backend } from "cdktf";
 import { AwsProvider } from "@cdktf/provider-aws/lib/provider";
-// import { Instance } from "@cdktf/provider-aws/lib/instance";
 
 import { EC2Module } from "./modules/ec2/ec2instance";
 
